@@ -14,9 +14,9 @@ SNR = 0:20;
 snrR = (10.^(SNR/10));
 
 %% p-q 
-probs = exp(-1./snrR);  
-probf = 1- exp(-1./snrR); 
-q = probf;
+R = 1; % Data Rate Defined as ONE
+a = (2^R - 1) * ones(size(snrR)) ./ snrR; %
+q = 1 - exp(-a.^2); % Outage Probability for Rayleigh CDF
 p = 1-q; 
 
 %% simulations
